@@ -22,11 +22,17 @@ alias vncviewer='vncviewer -passwd $HOME/.vnc/passwd'
 export _POSIX2_VERSION=199209
 export CDPATH=".:~:/usr/local"
 export EDITOR="vi"
-export HISTCONTROL="erasedups"
-export HISTSIZE=2000
-export HISTFILESIZE=10000
 export LANG="C"
 export GREP_OPTIONS="--exclude=*.svn*"
+
+export HISTCONTROL=erasedups
+export HISTSIZE=2000
+export HISTFILESIZE=10000
+export HISTTIMEFORMAT='%F %T '
+
+# OSX stuff:
+export CLICOLOR=1
+export LSCOLORS=GxFxCxDxBxegedabagaced
 
 alias curl='curl -C - -O'
 alias psg='ps -ef |grep'
@@ -91,7 +97,7 @@ nocolor="\[\e[0m\]"
 # end colors
 
 case $TERM in
-    screen|xterm|xterm-color|linux|console)
+    screen|xterm|xterm-color|xterm-256color|linux|console)
         PS1="\n${lightblack}\t${nocolor}\n"
         [ "$USER" = "root" ] && PS1="${PS1}${lightred}"
         PS1="${PS1}\u${darkwhite}@${darkblue}${SHN}"
