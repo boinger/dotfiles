@@ -1,18 +1,13 @@
 # .bash_profile
 
-
 [ -r /etc/bash_completion ] && . /etc/bash_completion
 
 #unset USERNAME
 UNAME=`uname`
 
-##case $UNAME in
-##    Linux)
-        export MANPATH="/usr/local/apache2/man:/usr/local/share/man:/usr/local/man:/usr/local/rrdtool/man:/usr/local/mrtg/man:/usr/local/netflow/man:/usr/local/squid/man:/usr/X11R6/man:/usr/share/man:/usr/share/locale/en/man:/usr/bin/man:/var/qmail/man"
-  LHN=`hostname`
-  SHN=${LHN%%.com}
-##        ;;
-##esac
+export MANPATH="/usr/local/share/man:/usr/local/man:/usr/share/man:/usr/share/locale/en/man"
+LHN=`hostname`
+SHN=${LHN%%.com}
 
 #export PATH=$PATH:/usr/games:/opt/kde/bin:/opt/gnome/bin
 #export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/lib/qt3/lib/pkgconfig:/usr/lib/pkgconfig:/opt/gnome/lib/pkgconfig
@@ -49,28 +44,28 @@ alias sj='ssh -l jv'
 
 ## ssh stuff
 if [ "${HOSTNAME%%.*}" == "jvdesktop" ]; then
-    SSH_ENV="$HOME/.ssh/environment"
-    function start_agent {
-        echo -n "Initialising new SSH agent..."
-        /usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
-        echo succeeded
-        chmod 600 "${SSH_ENV}"
-        . "${SSH_ENV}" > /dev/null
-        /usr/bin/ssh-add
-        trap "kill $SSH_AGENT_PID" 0
-    }
+  SSH_ENV="$HOME/.ssh/environment"
+  function start_agent {
+    echo -n "Initialising new SSH agent..."
+    /usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
+    echo succeeded
+    chmod 600 "${SSH_ENV}"
+    . "${SSH_ENV}" > /dev/null
+    /usr/bin/ssh-add
+    trap "kill $SSH_AGENT_PID" 0
+  }
 
-    if [ -f "${SSH_ENV}" ]; then
-        . "${SSH_ENV}" > /dev/null
-        ps -p ${SSH_AGENT_PID} -o comm= | grep ssh-agent$ > /dev/null || start_agent
-    else
-        start_agent
-    fi
+  if [ -f "${SSH_ENV}" ]; then
+    . "${SSH_ENV}" > /dev/null
+    ps -p ${SSH_AGENT_PID} -o comm= | grep ssh-agent$ > /dev/null || start_agent
+  else
+    start_agent
+  fi
 
-    # is somehow ssh-agent running without my key?
-    if [ -z "$(ssh-add -l | grep -o '.ssh')" ]; then
-        /usr/bin/ssh-add
-    fi
+  # is somehow ssh-agent running without my key?
+  if [ -z "$(ssh-add -l | grep -o '.ssh')" ]; then
+    /usr/bin/ssh-add
+  fi
 fi
 ## end ssh stuff
 
@@ -94,20 +89,29 @@ darkwhite="\[\e[0;37m\]"
 nocolor="\[\e[0m\]"
 # end colors
 
+case $UNAME in
+  Linux)
+    TSCOLOR=${lightblack}
+    ;;
+  *)
+    TSCOLOR=${darkwhite}
+    ;;
+esac
+
 #case $TERM in
-#    screen|xterm|xterm-color|xterm-256color|linux|console)
-        PS1="\n${darkwhite}\t${nocolor}\n"
-        [ "$USER" = "root" ] && PS1="${PS1}${lightred}"
-        PS1="${PS1}\u${darkwhite}@${darkblue}${SHN}"
-        if [ "$TERM" == "screen" ]; then
-            PS1="${PS1} ${darkyellow}[SCREEN '${STY##*\.}']"
-        fi
-        PS1="${PS1}${nocolor}\n${darkwhite}[${darkgreen}\w${darkwhite}]${darkcyan}\$ ${nocolor}"
-        export PS1
-#        ;;
-#    *)
-#        export PS1="\n\t\n\u@\h\n[\w]\$ "
-#        ;;
+# screen|xterm|xterm-color|xterm-256color|linux|console)
+    PS1="\n${TSCOLOR}\t${nocolor}\n"
+    [ "$USER" = "root" ] && PS1="${PS1}${lightred}"
+    PS1="${PS1}\u${darkwhite}@${darkblue}${SHN}"
+    if [ "$TERM" == "screen" ]; then
+      PS1="${PS1} ${darkyellow}[SCREEN '${STY##*\.}']"
+    fi
+    PS1="${PS1}${nocolor}\n${darkwhite}[${darkgreen}\w${darkwhite}]${darkcyan}\$ ${nocolor}"
+    export PS1
+#   ;;
+# *)
+#   export PS1="\n\t\n\u@\h\n[\w]\$ "
+#   ;;
 #esac
 
 ## tell .bashrc not to loop.
