@@ -1,5 +1,6 @@
 # .bash_profile
 
+
 [ -r /etc/bash_completion ] && . /etc/bash_completion
 
 #unset USERNAME
@@ -95,7 +96,7 @@ nocolor="\[\e[0m\]"
 
 #case $TERM in
 #    screen|xterm|xterm-color|xterm-256color|linux|console)
-        PS1="\n${lightblack}\t${nocolor}\n"
+        PS1="\n${darkwhite}\t${nocolor}\n"
         [ "$USER" = "root" ] && PS1="${PS1}${lightred}"
         PS1="${PS1}\u${darkwhite}@${darkblue}${SHN}"
         if [ "$TERM" == "screen" ]; then
