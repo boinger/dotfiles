@@ -37,6 +37,7 @@ export LSCOLORS=GxFxCxDxBxegedabagaced
 alias curl='curl -C - -O'
 alias psg='ps -ef |grep'
 alias lst="ls -R | grep ':$' | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/ /' -e 's/-/|/'"
+alias ulimit='ulimit -S'
 
 alias sshenv='. ~/.ssh/environment'
 alias sb='ssh -l boinger'
@@ -72,10 +73,6 @@ if [ "${HOSTNAME%%.*}" == "jvdesktop" ]; then
 fi
 ## end ssh stuff
 
-## tell .bashrc not to loop.
-export bash_profile_processed=1
-[ $((${bashrc_processed} + 1)) -ne 2 ] && [ -r .bashrc ] && . .bashrc
-
 # term colors
 lightblack="\[\e[1;30m\]"
 darkblack="\[\e[0;30m\]"
@@ -96,8 +93,8 @@ darkwhite="\[\e[0;37m\]"
 nocolor="\[\e[0m\]"
 # end colors
 
-case $TERM in
-    screen|xterm|xterm-color|xterm-256color|linux|console)
+#case $TERM in
+#    screen|xterm|xterm-color|xterm-256color|linux|console)
         PS1="\n${lightblack}\t${nocolor}\n"
         [ "$USER" = "root" ] && PS1="${PS1}${lightred}"
         PS1="${PS1}\u${darkwhite}@${darkblue}${SHN}"
@@ -106,8 +103,13 @@ case $TERM in
         fi
         PS1="${PS1}${nocolor}\n${darkwhite}[${darkgreen}\w${darkwhite}]${darkcyan}\$ ${nocolor}"
         export PS1
-        ;;
-    *)
-        export PS1="\n\t\n\u@\h\n[\w]\$ "
-        ;;
-esac
+#        ;;
+#    *)
+#        export PS1="\n\t\n\u@\h\n[\w]\$ "
+#        ;;
+#esac
+
+## tell .bashrc not to loop.
+export bash_profile_processed=1
+#[ $((${bashrc_processed} + 1)) -ne 2 ] && [ -r ~/.bashrc ] && . ~/.bashrc
+[ -r ~/.bashrc ] && . ~/.bashrc
