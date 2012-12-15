@@ -8,6 +8,7 @@ UNAME=`uname`
 export MANPATH="/usr/local/share/man:/usr/local/man:/usr/share/man:/usr/share/locale/en/man"
 LHN=`hostname`
 SHN=${LHN%%.com}
+SHN=${SHN%%.local}
 
 #export PATH=$PATH:/usr/games:/opt/kde/bin:/opt/gnome/bin
 #export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/lib/qt3/lib/pkgconfig:/usr/lib/pkgconfig:/opt/gnome/lib/pkgconfig
@@ -114,7 +115,6 @@ esac
 #   ;;
 #esac
 
-## tell .bashrc not to loop.
 export bash_profile_processed=1
 #[ $((${bashrc_processed} + 1)) -ne 2 ] && [ -r ~/.bashrc ] && . ~/.bashrc
 [ -r ~/.bashrc ] && . ~/.bashrc
