@@ -19,4 +19,7 @@ export LD_LIBRARY_PATH="/lib:/usr/lib:/usr/local/lib"
 [ $((${bash_profile_processed} + 1)) -ne 2 ] && [ -r ~/.bash_profile ] && . ~/.bash_profile
 
 ## no beeping:
-#[ ${HOSTNAME%%.*} == "whatever" ] && [ -x "`which xset`" ] && xset -b
+[ -x "`which xset`" ] && xset -b
+
+## Fuck you, capslock
+[ -x "`which setxkbmap`" ] && setxkbmap -option ctrl:nocaps
