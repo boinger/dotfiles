@@ -6,7 +6,10 @@
 [ -n "$SAVEPS" ] && export PS1=${SAVEPS}
 
 export PATH=/usr/kerberos/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:${HOME}/bin:${HOME}/scripts
+# optional PATHs
+[ -d "/opt/vagrant/bin" ] && export PATH=$PATH:/opt/vagrant/bin
 [ ! -e "`which git`" ] && [ -e /usr/local/git/bin ] && export PATH=$PATH:/usr/local/git/bin
+
 export LD_LIBRARY_PATH="/lib:/usr/lib:/usr/local/lib"
 
 [ -f ~/.ssh/environment ] && export PROMPT_COMMAND='. ~/.ssh/environment'
