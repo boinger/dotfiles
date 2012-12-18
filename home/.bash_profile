@@ -39,6 +39,7 @@ alias ulimit='ulimit -S'
 alias sshenv='. ~/.ssh/environment'
 alias sb='ssh -l boinger'
 alias sj='ssh -l jv'
+alias vsh="`which vagrant` ssh"
 
 [ -e "`which less`" ] && alias more='less'
 [ -e "`which vim`" ] && alias vi='TERM=xterm-color;vim'
