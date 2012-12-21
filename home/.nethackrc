@@ -1,0 +1,12 @@
+# === OPTIONS ===
+# character
+#OPTIONS=race:elf
+# appearance
+OPTIONS=color,hilite_pet,lit_corridor,menucolors,DECgraphics,boulder:8
+OPTIONS=showborn,showexp,showscore,time
+OPTIONS=msg_window:f,sortloot=loot,disclose:+i+a+v+g+c
+# controls
+OPTIONS=autodig,!autopickup
+# names
+OPTIONS=catname:Serval,dogname:Jos,fruit:slime mold.
+

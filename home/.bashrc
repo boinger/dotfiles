@@ -9,6 +9,7 @@ export PATH=/usr/kerberos/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/local/bin:/us
 # optional PATHs
 [ -d "/opt/vagrant/bin" ] && export PATH=$PATH:/opt/vagrant/bin
 [ ! -e "`which git`" ] && [ -e /usr/local/git/bin ] && export PATH=$PATH:/usr/local/git/bin
+[ ! -e "/usr/games/nethack" ] && export PATH=$PATH:/usr/games
 
 export LD_LIBRARY_PATH="/lib:/usr/lib:/usr/local/lib"
 
