@@ -3,7 +3,7 @@
 [ -n "$PS1" ] && export SAVEPS=${PS1}
 [ -r /etc/bashrc ] && . /etc/bashrc
 [ -r ~/.bash_functions ] && . ~/.bash_functions
-[ -n "$SAVEPS" ] && export PS1=${SAVEPS}
+[ -n "$SAVEPS" ] && export PS1=${SAVEPS} && unset SAVEPS
 
 export PATH=/usr/kerberos/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:${HOME}/bin:${HOME}/scripts
 # optional PATHs
