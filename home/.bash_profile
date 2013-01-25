@@ -17,7 +17,7 @@ SHN=${SHN%%.localdomain}
 alias gif2png='gif2png -O'
 alias vncviewer='vncviewer -passwd $HOME/.vnc/passwd'
 
-export _POSIX2_VERSION=199209
+#export _POSIX2_VERSION=199209
 export CDPATH=".:~:/usr/local"
 export EDITOR="vi"
 export LANG="C"
@@ -42,6 +42,8 @@ alias sb='ssh -l boinger'
 alias sj='ssh -l jv'
 alias vsh="vagrant ssh"
 alias gd='git diff --minimal -b'
+
+#alias push_dognabit='test -d /mnt/sshfs0/html/ || sshfs mmvier@dognabit.com:./ /mnt/sshfs0/ && rsync -CrlptoDv ~/Documents/Sites/dognabit/ /mnt/sshfs0/html/'
 
 [ -e "`which less`" ] && alias more='less'
 [ -e "`which vim`" ] && alias vi='TERM=xterm-color;vim'

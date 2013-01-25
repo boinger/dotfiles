@@ -1,34 +1,62 @@
 # === OPTIONS ===
-# character
-#OPTIONS=race:elf
-# appearance
-OPTIONS=color,hilite_pet,lit_corridor,menucolors,DECgraphics,boulder:8
-OPTIONS=showborn,showexp,showscore,time
+#OPTIONS=role:arch
+#OPTIONS=role:wiz
+OPTIONS=role:val
+#OPTIONS=role:random
+
+OPTIONS=race:random
+OPTIONS=gender:random
+OPTIONS=align:cha
+#OPTIONS=align:random
+
+OPTIONS=catname:Serval,dogname:Jos,horsename:SuperHorse,safe_pet
+OPTIONS=hilite_pet
+OPTIONS=fruit:durien
+
+OPTIONS=boulder:8
 OPTIONS=msg_window:f,sortloot=loot,disclose:+i+a+v+g+c
-# controls
-OPTIONS=autodig,!autopickup
-# names
-OPTIONS=catname:Serval,dogname:Jos,fruit:slime mold.
+OPTIONS=DECgraphics,!IBMgraphics
+OPTIONS=windowtype=tty
+OPTIONS=color,number_pad
+OPTIONS=autopickup,runmode=run
+OPTIONS=perm_invent
+OPTIONS=autoquiver,autodig
+OPTIONS=extmenu,standout,!cmdassist
+#OPTIONS=disclose:+i +a +v +g +c
+OPTIONS=disclose:+i +a -v -g +c
+OPTIONS=rest_on_space
+OPTIONS=showborn,showexp,showscore,time
+OPTIONS=lit_corridor
+OPTIONS=pushweapon
+OPTIONS=nolegacy,notombstone
+OPTIONS=lootabc
+
+OPTIONS=menucolors
 
 # === MENUCOLOR ===
 # lightcyan - good food
 # orange - cursed (or under +0)
 # yellow - not cursed
 # lightgreen - blessed
-MENUCOLOR="safe"=yellow
-MENUCOLOR="[0-9]:[0-9]"=yellow
-MENUCOLOR="\+[0-9]"=yellow
-MENUCOLOR="[Cc]ursed"=orange
+MENUCOLOR="[Bb]lessed"=green
+MENUCOLOR="[Bb]lessed .* ([a-z]"=green&underline
+MENUCOLOR="[Hh]oly"=lightgreen
+MENUCOLOR="[Hh]oly .* ([a-z]"=lightgreen&underline
 MENUCOLOR="[Uu]ncursed"=yellow
-MENUCOLOR="[Bb]lessed"=lightgreen
-MENUCOLOR="-[0-9]"=orange
-
-# underline objects "(wielded)", "(in quiver)", "(being worn)", ...
-MENUCOLOR="safe .* ([a-z]"=yellow,&underline
-MENUCOLOR="+[0-9] .* ([a-z]"=yellow&underline
-MENUCOLOR="[Cc]ursed .* ([a-z]"=orange&underline
 MENUCOLOR="[Uu]ncursed .* ([a-z]"=yellow&underline
-MENUCOLOR="[Bb]lessed .* ([a-z]"=lightgreen&underline
+MENUCOLOR="[Cc]ursed"=orange
+MENUCOLOR="[Cc]ursed .* ([a-z]"=orange&underline
+MENUCOLOR="[Uu]nholy"=red
+MENUCOLOR="[Uu]nholy .* ([a-z]"=red&underline
+MENUCOLOR="[Ww]orthless"=brown
+
+MENUCOLOR="safe"=yellow
+MENUCOLOR="safe .* ([a-z]"=yellow,&underline
+
+MENUCOLOR="[0-9]:[0-9]"=yellow
+MENUCOLOR="+[0-9]"=yellow
+MENUCOLOR="+[0-9] .* ([a-z]"=yellow&underline
+MENUCOLOR="-[0-9]"=orange
 MENUCOLOR="-[0-9] .* ([a-z]"=orange&underline
 
 # lightcyan - good food
@@ -38,3 +66,15 @@ MENUCOLOR="ration"=lightcyan
 MENUCOLOR="lembas wafer"=lightcyan
 MENUCOLOR="lichen corpse"=lightgreen
 MENUCOLOR="lizard corpse"=lightmagenta
+
+AUTOPICKUP_EXCEPTION="<*lichen corpse*"
+AUTOPICKUP_EXCEPTION=">*corpse*"
+AUTOPICKUP_EXCEPTION=">* cursed*"
+AUTOPICKUP_EXCEPTION=">* large box*"
+AUTOPICKUP_EXCEPTION=">* chest*"
+AUTOPICKUP_EXCEPTION=">* worthless*"
+AUTOPICKUP_EXCEPTION=">* load stone*"
+AUTOPICKUP_EXCEPTION=">* grey stone*"
+AUTOPICKUP_EXCEPTION=">* gray stone*"
+AUTOPICKUP_EXCEPTION=">* rock"
+AUTOPICKUP_EXCEPTION=">* statue *"
