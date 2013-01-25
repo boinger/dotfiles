@@ -15,12 +15,15 @@ export LD_LIBRARY_PATH="/lib:/usr/lib:/usr/local/lib"
 
 [ -f ~/.ssh/environment ] && export PROMPT_COMMAND='. ~/.ssh/environment'
 
-## tell .bash_profile to not loop
-#export bashrc_processed=1
-[ $((${bash_profile_processed} + 1)) -ne 2 ] && [ -r ~/.bash_profile ] && . ~/.bash_profile
 
 ## no beeping:
 [ -x "`which xset`" ] && xset -b
 
 ## Fuck you, capslock
 [ -x "`which setxkbmap`" ] && setxkbmap -option ctrl:nocaps
+
+#[ $((${bash_profile_processed} + 1)) -ne 2 ] && [ -r ~/.bash_profile ] && . ~/.bash_profile
+. ~/.bash_profile
+
+# tell .bash_profile to not loop
+export bashrc_processed=1
