@@ -1,4 +1,5 @@
 # .bash_profile
+#echo "this is bash_profile"
 
 [ -r /etc/bash_completion ] && . /etc/bash_completion
 
@@ -121,6 +122,6 @@ esac
 #   ;;
 #esac
 
-#export bash_profile_processed=1
+export bash_profile_processed=1
 [ $((${bashrc_processed} + 1)) -ne 2 ] && [ -r ~/.bashrc ] && . ~/.bashrc
 #[ -r ~/.bashrc ] && . ~/.bashrc
