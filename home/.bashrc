@@ -19,7 +19,7 @@ export LD_LIBRARY_PATH="/lib:/usr/lib:/usr/local/lib"
 [ -x "`which xset`" ] && xset -b > /dev/null 2>&1
 
 ## Fuck you, capslock
-[ -x "`which setxkbmap`" ] && setxkbmap -option ctrl:nocaps
+[ -x "`which setxkbmap`" ] && setxkbmap -option ctrl:nocaps > /dev/null 2>&1
 
 # tell .bash_profile to not loop
 export bashrc_processed=1
