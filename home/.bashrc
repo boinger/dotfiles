@@ -16,7 +16,7 @@ export LD_LIBRARY_PATH="/lib:/usr/lib:/usr/local/lib"
 [ -f ~/.ssh/environment ] && export PROMPT_COMMAND='. ~/.ssh/environment'
 
 ## no beeping:
-[ -x "`which xset`" ] && xset -b
+[ -x "`which xset`" ] && xset -b > /dev/null 2>&1
 
 ## Fuck you, capslock
 [ -x "`which setxkbmap`" ] && setxkbmap -option ctrl:nocaps

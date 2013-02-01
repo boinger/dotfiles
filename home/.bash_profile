@@ -43,6 +43,9 @@ alias sb='ssh -l boinger'
 alias sj='ssh -l jv'
 alias vsh="vagrant ssh"
 alias gd='git diff --minimal -b'
+alias gs='git status -u all'
+alias gpr='git pull --rebase'
+alias gspa='git subtree push-all'
 
 #alias push_dognabit='test -d /mnt/sshfs0/html/ || sshfs mmvier@dognabit.com:./ /mnt/sshfs0/ && rsync -CrlptoDv ~/Documents/Sites/dognabit/ /mnt/sshfs0/html/'
 
