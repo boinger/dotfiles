@@ -6,15 +6,15 @@ OPTIONS=role:val
 
 OPTIONS=race:random
 OPTIONS=gender:random
-OPTIONS=align:cha
-#OPTIONS=align:random
+#OPTIONS=align:cha
+OPTIONS=align:random
 
 OPTIONS=catname:Serval,dogname:Jos,horsename:SuperHorse,safe_pet
 OPTIONS=hilite_pet
 OPTIONS=fruit:durien
 
 OPTIONS=boulder:8
-OPTIONS=msg_window:f,sortloot=loot,disclose:+i+a+v+g+c
+OPTIONS=msg_window:f
 OPTIONS=DECgraphics,!IBMgraphics
 OPTIONS=windowtype=tty
 OPTIONS=color,number_pad
@@ -25,7 +25,7 @@ OPTIONS=extmenu,standout,!cmdassist
 #OPTIONS=disclose:+i +a +v +g +c
 OPTIONS=disclose:+i +a -v -g +c
 OPTIONS=rest_on_space
-OPTIONS=showborn,showexp,showscore,time
+OPTIONS=showexp,showscore,time
 OPTIONS=lit_corridor
 OPTIONS=pushweapon
 OPTIONS=nolegacy,notombstone
@@ -38,34 +38,34 @@ OPTIONS=menucolors
 # orange - cursed (or under +0)
 # yellow - not cursed
 # lightgreen - blessed
-MENUCOLOR="[Bb]lessed"=green
-MENUCOLOR="[Bb]lessed .* ([a-z]"=green&underline
-MENUCOLOR="[Hh]oly"=lightgreen
-MENUCOLOR="[Hh]oly .* ([a-z]"=lightgreen&underline
-MENUCOLOR="[Uu]ncursed"=yellow
-MENUCOLOR="[Uu]ncursed .* ([a-z]"=yellow&underline
-MENUCOLOR="[Cc]ursed"=orange
-MENUCOLOR="[Cc]ursed .* ([a-z]"=orange&underline
-MENUCOLOR="[Uu]nholy"=red
-MENUCOLOR="[Uu]nholy .* ([a-z]"=red&underline
-MENUCOLOR="[Ww]orthless"=brown
-
-MENUCOLOR="safe"=yellow
-MENUCOLOR="safe .* ([a-z]"=yellow,&underline
-
-MENUCOLOR="[0-9]:[0-9]"=yellow
-MENUCOLOR="+[0-9]"=yellow
-MENUCOLOR="+[0-9] .* ([a-z]"=yellow&underline
-MENUCOLOR="-[0-9]"=orange
-MENUCOLOR="-[0-9] .* ([a-z]"=orange&underline
-
-# lightcyan - good food
 # lightgreen - lichen corpse
 # lightmagenta - lizard corpse
 MENUCOLOR="ration"=lightcyan
+MENUCOLOR="regeneration"=yellow
 MENUCOLOR="lembas wafer"=lightcyan
 MENUCOLOR="lichen corpse"=lightgreen
 MENUCOLOR="lizard corpse"=lightmagenta
+
+MENUCOLOR="[0-9]:[0-9]"=yellow
+MENUCOLOR="+[1-9]"=yellow
+MENUCOLOR="+[1-9] .* ([a-z]"=yellow&underline
+MENUCOLOR="-[1-9]"=orange
+MENUCOLOR="-[1-9] .* ([a-z]"=orange&underline
+
+MENUCOLOR=" [Bb]lessed"=green
+MENUCOLOR=" [Bb]lessed .* ([a-z]"=green&underline
+MENUCOLOR=" [Hh]oly"=lightgreen
+MENUCOLOR=" [Hh]oly .* ([a-z]"=lightgreen&underline
+MENUCOLOR=" [Uu]ncursed"=yellow
+MENUCOLOR=" [Uu]ncursed .* ([a-z]"=yellow&underline
+MENUCOLOR=" [Cc]ursed"=orange
+MENUCOLOR=" [Cc]ursed .* ([a-z]"=orange&underline
+MENUCOLOR=" [Uu]nholy"=red
+MENUCOLOR=" [Uu]nholy .* ([a-z]"=red&underline
+MENUCOLOR=" [Ww]orthless"=brown
+
+MENUCOLOR="safe"=yellow
+MENUCOLOR="safe .* ([a-z]"=yellow,&underline
 
 AUTOPICKUP_EXCEPTION="<*lichen corpse*"
 AUTOPICKUP_EXCEPTION=">*corpse*"
@@ -78,3 +78,5 @@ AUTOPICKUP_EXCEPTION=">* grey stone*"
 AUTOPICKUP_EXCEPTION=">* gray stone*"
 AUTOPICKUP_EXCEPTION=">* rock"
 AUTOPICKUP_EXCEPTION=">* statue *"
+AUTOPICKUP_EXCEPTION=">* ice box *"
+AUTOPICKUP_EXCEPTION=">* heavy iron ball*"
