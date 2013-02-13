@@ -43,7 +43,7 @@ alias sb='ssh -l boinger'
 alias sj='ssh -l jv'
 alias vsh="vagrant ssh"
 alias gd='git diff --minimal -b'
-alias gs='git status -u all'
+alias gs='git status'
 alias gpr='git pull --rebase'
 alias gspa='git subtree push-all'
 
