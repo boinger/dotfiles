@@ -1,6 +1,8 @@
 # .bashrc
 #echo "this is bashrc"
 
+[ -n "$DESKTOP_SESSION" ] && unset bash_profile_processed
+
 [ -r /etc/bashrc ] && . /etc/bashrc
 [ -r ~/.bash_functions ] && . ~/.bash_functions
 #[ -n "$SAVEPS" ] && export PS1=${SAVEPS} && unset SAVEPS
