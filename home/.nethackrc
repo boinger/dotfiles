@@ -4,10 +4,14 @@
 OPTIONS=role:val
 #OPTIONS=role:random
 
-OPTIONS=race:random
+#OPTIONS=race:hum
+OPTIONS=race:dwa
+#OPTIONS=race:random
 OPTIONS=gender:random
 #OPTIONS=align:cha
-OPTIONS=align:random
+#OPTIONS=align:neu
+OPTIONS=align:law
+#OPTIONS=align:random
 
 OPTIONS=catname:Serval,dogname:Jos,horsename:SuperHorse,safe_pet
 OPTIONS=hilite_pet
