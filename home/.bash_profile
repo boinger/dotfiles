@@ -1,4 +1,5 @@
 # .bash_profile
+#echo "this is bash_profile"
 
 [ -r /etc/bash_completion ] && . /etc/bash_completion
 
@@ -9,6 +10,7 @@ export MANPATH="/usr/local/share/man:/usr/local/man:/usr/share/man:/usr/share/lo
 LHN=`hostname`
 SHN=${LHN%%.com}
 SHN=${SHN%%.local}
+SHN=${SHN%%.localdomain}
 
 #export PATH=$PATH:/usr/games:/opt/kde/bin:/opt/gnome/bin
 #export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/lib/qt3/lib/pkgconfig:/usr/lib/pkgconfig:/opt/gnome/lib/pkgconfig
@@ -39,7 +41,11 @@ alias ulimit='ulimit -S'
 alias sshenv='. ~/.ssh/environment'
 alias sb='ssh -l boinger'
 alias sj='ssh -l jv'
-alias vsh="`which vagrant` ssh"
+alias vsh="vagrant ssh"
+alias gd='git diff --minimal -b'
+alias gs='git status'
+alias gpr='git pull --rebase'
+alias gspa='git subtree push-all'
 
 #alias push_dognabit='test -d /mnt/sshfs0/html/ || sshfs mmvier@dognabit.com:./ /mnt/sshfs0/ && rsync -CrlptoDv ~/Documents/Sites/dognabit/ /mnt/sshfs0/html/'
 
@@ -115,9 +121,10 @@ esac
 #   ;;
 # *)
 #   export PS1="\n\t\n\u@\h\n[\w]\$ "
+#   HN=`hostname` && export PS1="\n\t\n\u@${HN%%.localdomain}\n[\w]\$ "
 #   ;;
 #esac
 
-#export bash_profile_processed=1
+export bash_profile_processed=1
 [ $((${bashrc_processed} + 1)) -ne 2 ] && [ -r ~/.bashrc ] && . ~/.bashrc
 #[ -r ~/.bashrc ] && . ~/.bashrc
