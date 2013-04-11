@@ -23,6 +23,7 @@ OPTIONS=DECgraphics,!IBMgraphics
 OPTIONS=windowtype=tty
 OPTIONS=color,number_pad
 OPTIONS=autopickup,runmode=run
+OPTIONS=pickup_burden:unencumbered
 OPTIONS=perm_invent
 OPTIONS=autoquiver,autodig
 OPTIONS=extmenu,standout,!cmdassist
@@ -71,8 +72,10 @@ MENUCOLOR=" [Ww]orthless"=brown
 MENUCOLOR="safe"=yellow
 MENUCOLOR="safe .* ([a-z]"=yellow,&underline
 
-AUTOPICKUP_EXCEPTION="<*lichen corpse*"
-AUTOPICKUP_EXCEPTION=">*corpse*"
+## Walk in peace over empty wands:
+AUTOPICKUP_EXCEPTION=">*:0)*"
+AUTOPICKUP_EXCEPTION=">* named empty"
+
 AUTOPICKUP_EXCEPTION=">* cursed*"
 AUTOPICKUP_EXCEPTION=">* large box*"
 AUTOPICKUP_EXCEPTION=">* chest*"
@@ -82,5 +85,58 @@ AUTOPICKUP_EXCEPTION=">* grey stone*"
 AUTOPICKUP_EXCEPTION=">* gray stone*"
 AUTOPICKUP_EXCEPTION=">* rock"
 AUTOPICKUP_EXCEPTION=">* statue *"
-AUTOPICKUP_EXCEPTION=">* ice box *"
+AUTOPICKUP_EXCEPTION=">* ice box*"
 AUTOPICKUP_EXCEPTION=">* heavy iron ball*"
+
+AUTOPICKUP_EXCEPTION="<*lichen corpse*"
+AUTOPICKUP_EXCEPTION="<*lizard corpse*"
+#AUTOPICKUP_EXCEPTION=">*corpse*"
+AUTOPICKUP_EXCEPTION=">*a corpse*"
+AUTOPICKUP_EXCEPTION=">*b corpse*"
+AUTOPICKUP_EXCEPTION=">*c corpse*"
+AUTOPICKUP_EXCEPTION=">*e corpse*"
+AUTOPICKUP_EXCEPTION=">*f corpse*"
+AUTOPICKUP_EXCEPTION=">*g corpse*"
+AUTOPICKUP_EXCEPTION=">*h corpse*"
+AUTOPICKUP_EXCEPTION=">*i corpse*"
+AUTOPICKUP_EXCEPTION=">*k corpse*"
+AUTOPICKUP_EXCEPTION=">*l corpse*"
+AUTOPICKUP_EXCEPTION=">*m corpse*"
+#AUTOPICKUP_EXCEPTION=">*n corpse*"
+AUTOPICKUP_EXCEPTION=">*in corpse*"
+AUTOPICKUP_EXCEPTION=">*o corpse*"
+AUTOPICKUP_EXCEPTION=">*p corpse*"
+AUTOPICKUP_EXCEPTION=">*r corpse*"
+AUTOPICKUP_EXCEPTION=">*s corpse*"
+AUTOPICKUP_EXCEPTION=">*' corpse*"
+AUTOPICKUP_EXCEPTION=">*t corpse*"
+AUTOPICKUP_EXCEPTION=">*u corpse*"
+AUTOPICKUP_EXCEPTION=">*v corpse*"
+AUTOPICKUP_EXCEPTION=">*x corpse*"
+AUTOPICKUP_EXCEPTION=">*y corpse*"
+AUTOPICKUP_EXCEPTION=">*ld corpse*"
+AUTOPICKUP_EXCEPTION=">*nd corpse*"
+AUTOPICKUP_EXCEPTION=">*ud corpse*"
+AUTOPICKUP_EXCEPTION=">*ord corpse*"
+AUTOPICKUP_EXCEPTION=">*uard corpse*"
+AUTOPICKUP_EXCEPTION=">*wizard corpse*"
+
+AUTOPICKUP_EXCEPTION="<*wand of wishing"
+AUTOPICKUP_EXCEPTION="<*wand called wish"
+AUTOPICKUP_EXCEPTION="<*wand of create monster"
+AUTOPICKUP_EXCEPTION="<*wand of teleportation"
+AUTOPICKUP_EXCEPTION="<*wand called tele"
+# AUTOPICKUP_EXCEPTION="<*wand of polymorph"
+# # AUTOPICKUP_EXCEPTION="<*wand called poly"
+AUTOPICKUP_EXCEPTION="<*wand of fire"
+AUTOPICKUP_EXCEPTION="<*wand of lightning"
+AUTOPICKUP_EXCEPTION="<*wand of death"
+# # Cold is used for Juiblex swamp, etc.
+# AUTOPICKUP_EXCEPTION=">*wand of cold"
+AUTOPICKUP_EXCEPTION="<*magic marker"
+AUTOPICKUP_EXCEPTION="<*magic lamp"
+AUTOPICKUP_EXCEPTION="<lamp"
+AUTOPICKUP_EXCEPTION="<*d lamp"
+AUTOPICKUP_EXCEPTION="<*amulet of life saving"
+AUTOPICKUP_EXCEPTION="<*amulet called life"
+AUTOPICKUP_EXCEPTION="<*athame"
