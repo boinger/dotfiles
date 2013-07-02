@@ -23,6 +23,7 @@ export CDPATH=".:~:/usr/local"
 export EDITOR="vi"
 export LANG="C"
 export GREP_OPTIONS="--exclude=*.svn*"
+export SHMUX_SSH_OPTS="-l root"
 
 export HISTCONTROL=erasedups
 export HISTSIZE=2000
@@ -42,7 +43,7 @@ alias sshenv='. ~/.ssh/environment'
 alias sb='ssh -l boinger'
 alias sj='ssh -l jv'
 alias vsh="vagrant ssh"
-alias gd='git diff --minimal -b'
+alias gd='git diff -b'
 alias gs='git status'
 alias gpr='git pull --rebase'
 alias gspa='git subtree push-all'
