@@ -11,6 +11,7 @@
 export PATH=/usr/kerberos/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:${HOME}/bin:${HOME}/scripts
 # optional PATHs
 [ -d "/opt/vagrant/bin" ] && export PATH=$PATH:/opt/vagrant/bin
+[ -d "/opt/ec2-api-tools/bin" ] && export PATH=$PATH:/opt/ec2-api-tools/bin
 [ ! -e "`which git`" ] && [ -e /usr/local/git/bin ] && export PATH=$PATH:/usr/local/git/bin
 [ ! -e "/usr/games/nethack" ] && export PATH=$PATH:/usr/games
 
