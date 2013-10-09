@@ -43,6 +43,10 @@ alias sshenv='. ~/.ssh/environment'
 alias sb='ssh -l boinger'
 alias sj='ssh -l jv'
 alias vsh="vagrant ssh"
+
+alias msshr='mssh --sshopt -oStrictHostKeyChecking=no --sshopt -lroot'
+alias mssh='mssh --sshopt -oStrictHostKeyChecking=no'
+
 alias gd='git diff -b'
 alias gs='git status'
 alias gpr='git pull --rebase'
