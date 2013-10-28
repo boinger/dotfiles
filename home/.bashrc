@@ -17,7 +17,7 @@ export PATH=/usr/kerberos/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/local/bin:/us
 
 export LD_LIBRARY_PATH="/lib:/usr/lib:/usr/local/lib"
 
-export JAVA_HOME="/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.25.x86_64/jre"
+export JAVA_HOME="/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.45.x86_64/jre/"
 
 [ -f ~/.ssh/environment ] && export PROMPT_COMMAND='. ~/.ssh/environment'
 
