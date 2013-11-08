@@ -6,6 +6,19 @@ function sr {
   fi
 }
 
+function err {
+  if [ $1 ]; then
+    X=$(er "$1" 2>&1)
+    if [ $? != 0 ]; then
+      echo "invalid range"
+    else
+      ssh -2 -l root $X
+    fi
+  else
+    er -h
+  fi
+}
+
 function netselect {
   if [ -f $1 ]; then
     serverlist=`cat $1`
