@@ -8,7 +8,7 @@ function sr {
 
 function err {
   if [ $1 ]; then
-    X=$(er "$1" 2>&1)
+    X=$(er -e "$1" 2>&1)
     if [ $? != 0 ]; then
       echo "invalid range"
     else
