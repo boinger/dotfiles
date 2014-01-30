@@ -22,7 +22,7 @@ export LD_LIBRARY_PATH="/lib:/usr/lib:/usr/local/lib"
 if [ "$UNAME" == "Darwin" ]; then
   export JAVA_HOME=$(/usr/libexec/java_home)
 else
-  export JAVA_HOME="/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.45.x86_64/jre/"
+  export JAVA_HOME="/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.51.x86_64/jre"
 fi
 
 [ -f ~/.ssh/environment ] && export PROMPT_COMMAND='. ~/.ssh/environment'
