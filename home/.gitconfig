@@ -1,3 +1,6 @@
+[core]
+  autocrlf = input
+  safecrlf = false
 [user]
 	email = jeff@jeffvier.com
 	name = jv
