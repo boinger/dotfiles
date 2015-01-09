@@ -22,7 +22,6 @@ alias vncviewer='vncviewer -passwd $HOME/.vnc/passwd'
 export CDPATH=".:~:/usr/local"
 export EDITOR="vi"
 export LANG="C"
-export GREP_OPTIONS="--exclude=*.svn*"
 export SHMUX_SSH_OPTS="-l root"
 
 export HISTCONTROL=erasedups
