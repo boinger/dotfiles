@@ -33,7 +33,7 @@ export HISTTIMEFORMAT='%F %T '
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
 
-alias curl='curl -C - -O'
+#alias curl='curl -C - -O'
 alias psg='ps -ef |grep'
 alias lst="ls -R | grep ':$' | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/ /' -e 's/-/|/'"
 alias ulimit='ulimit -S'
