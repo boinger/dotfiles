@@ -132,3 +132,7 @@ esac
 export bash_profile_processed=1
 [ $((${bashrc_processed} + 1)) -ne 2 ] && [ -r ~/.bashrc ] && . ~/.bashrc
 #[ -r ~/.bashrc ] && . ~/.bashrc
+
+# MacPorts Installer addition on 2014-12-28_at_16:46:45: adding an appropriate PATH variable for use with MacPorts.
+export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+
