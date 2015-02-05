@@ -21,7 +21,8 @@ alias vncviewer='vncviewer -passwd $HOME/.vnc/passwd'
 #export _POSIX2_VERSION=199209
 export CDPATH=".:~:/usr/local"
 export EDITOR="vi"
-export LANG="C"
+#export LANG="C"
+export LANG="en_US.UTF-8"
 export SHMUX_SSH_OPTS="-l root"
 
 export HISTCONTROL=erasedups
