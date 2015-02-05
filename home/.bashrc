@@ -38,6 +38,8 @@ export DYLD_LIBRARY_PATH="/opt/local/lib/"
 ## Fuck you, capslock
 [ -x "`which setxkbmap 2>&1 > /dev/null`" ] && setxkbmap -option ctrl:nocaps > /dev/null 2>&1
 
+[ -f /etc/profile.d/rvm.sh ] && . /etc/profile.d/rvm.sh
+
 # tell .bash_profile to not loop
 export bashrc_processed=1
 
