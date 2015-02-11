@@ -29,9 +29,7 @@ fi
 [ -f ~/.ssh/environment ] && export PROMPT_COMMAND='. ~/.ssh/environment'
 
 ## ImageMagick crap:
-export PATH="/opt/local/bin:$PATH"
-export DYLD_LIBRARY_PATH="/opt/local/lib/"
-
+#export DYLD_LIBRARY_PATH="$DYLD_LIBRARY_PATH:/usr/lib:/opt/local/lib"
 
 ## no beeping:
 [ -x "`which xset 2>&1 > /dev/null`" ] && xset -b > /dev/null 2>&1
@@ -47,5 +45,9 @@ export bashrc_processed=1
 [ $((${bash_profile_processed} + 1)) -ne 2 ] && [ -r ~/.bash_profile ] && . ~/.bash_profile
 #. ~/.bash_profile
 
-export PERL_MB_OPT="--install_base \"/Users/boinger/perl5\""
-export PERL_MM_OPT="INSTALL_BASE=/Users/boinger/perl5"
+if [ "$UNAME" == "Darwin" ]; then
+  export PERL_MB_OPT="--install_base \"$HOME/perl5\""
+  export PERL_MM_OPT="INSTALL_BASE=$HOME/perl5"
+  PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+fi
+
