@@ -8,6 +8,7 @@ UNAME=`uname`
 [ "$UNAME" == "Darwin" ] && SAVEPS=$PS1
 [ -r /etc/bashrc ] && . /etc/bashrc
 [ -r ~/.bash_functions ] && . ~/.bash_functions
+[ -r ~/.bash_fxcm ] && . ~/.bash_fxcm
 [ "$UNAME" == "Darwin" ] && [ -n "$SAVEPS" ] && export PS1=${SAVEPS} && unset SAVEPS
 
 export PATH=/usr/kerberos/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:${HOME}/bin:${HOME}/scripts
@@ -46,5 +47,5 @@ export bashrc_processed=1
 [ $((${bash_profile_processed} + 1)) -ne 2 ] && [ -r ~/.bash_profile ] && . ~/.bash_profile
 #. ~/.bash_profile
 
-PERL_MB_OPT="--install_base \"/Users/boinger/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/Users/boinger/perl5"; export PERL_MM_OPT;
+export PERL_MB_OPT="--install_base \"/Users/boinger/perl5\""
+export PERL_MM_OPT="INSTALL_BASE=/Users/boinger/perl5"
