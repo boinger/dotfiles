@@ -78,7 +78,7 @@ if [ -f .start_ssh-agent ]; then
   fi
 
   # is somehow ssh-agent running without my key?
-  if [ -z "$(ssh-add -l | grep -o '.ssh')" ]; then
+  if [ -z "$(ssh-add -l | grep '.ssh')" ]; then
     /usr/bin/ssh-add
   fi
 fi
