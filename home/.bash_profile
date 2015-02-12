@@ -62,7 +62,7 @@ if [ -f .start_ssh-agent ]; then
   SSH_ENV="$HOME/.ssh/environment"
   function start_agent {
     echo -n "Initialising new SSH agent..."
-    eval `ssh-agent -s` | sed 's/^echo/#echo/' > "${SSH_ENV}"
+    ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
     echo succeeded
     chmod 600 "${SSH_ENV}"
     . "${SSH_ENV}" > /dev/null
