@@ -59,22 +59,23 @@ alias gspa='git subtree push-all'
 
 ## ssh stuff
 if [ -f .start_ssh-agent ]; then
-  SSH_ENV="$HOME/.ssh/environment"
-  function start_agent {
-    echo -n "Initialising new SSH agent..."
-    ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
-    echo succeeded
-    chmod 600 "${SSH_ENV}"
-    . "${SSH_ENV}" > /dev/null
-    /usr/bin/ssh-add
-    trap "kill $SSH_AGENT_PID" 0
-  }
+  if [ -z "`which keychain`" ]; then
+    echo "you need to install keychain"
+  else
+    SSH_ENV="$HOME/.ssh/environment"
+    function start_keychain {
+      echo -n "Initialising keychain..."
+      keychain --eval -q > ${SSH_ENV}
+      echo succeeded
+      chmod 600 ${SSH_ENV}
+    }
+  fi
 
   if [ -f "${SSH_ENV}" ]; then
     . "${SSH_ENV}" > /dev/null
     ps -p ${SSH_AGENT_PID} -o comm= | grep ssh-agent$ > /dev/null || start_agent
   else
-    start_agent
+    start_keychain
   fi
 
   # is somehow ssh-agent running without my key?
