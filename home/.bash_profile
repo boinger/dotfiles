@@ -58,7 +58,7 @@ alias gspa='git subtree push-all'
 [ -e "`which vim`" ] && alias vi='TERM=xterm-color;vim'
 
 ## ssh stuff
-if [ "${HOSTNAME%%.*}" == "jvdesktop" ]; then
+if [ -f .start_ssh-agent ]; then
   SSH_ENV="$HOME/.ssh/environment"
   function start_agent {
     echo -n "Initialising new SSH agent..."
