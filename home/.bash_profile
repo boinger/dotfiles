@@ -73,7 +73,7 @@ if [ -f .start_ssh-agent ]; then
 
   if [ -f "${SSH_ENV}" ]; then
     . "${SSH_ENV}" > /dev/null
-    ps -p ${SSH_AGENT_PID} -o comm= | grep ssh-agent$ > /dev/null || start_agent
+    ps -p ${SSH_AGENT_PID} -o comm= | grep ssh-agent$ > /dev/null || start_keychain
   else
     start_keychain
   fi
