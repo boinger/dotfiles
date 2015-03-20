@@ -69,18 +69,19 @@ if [ -f .start_ssh-agent ]; then
       echo succeeded
       chmod 600 ${SSH_ENV}
     }
-  fi
 
-  if [ -f "${SSH_ENV}" ]; then
-    . "${SSH_ENV}" > /dev/null
-    ps -p ${SSH_AGENT_PID} -o comm= | grep ssh-agent$ > /dev/null || start_keychain
-  else
-    start_keychain
-  fi
+    if [ -f "${SSH_ENV}" ]; then
+      . "${SSH_ENV}" > /dev/null
+      ps -p ${SSH_AGENT_PID} -o comm= | grep ssh-agent$ > /dev/null || start_keychain
+    else
+      start_keychain
+    fi
 
-  # is somehow ssh-agent running without my key?
-  if [ -z "$(ssh-add -l | grep '.ssh')" ]; then
-    /usr/bin/ssh-add
+    # is somehow ssh-agent running without my key?
+    if [ -z "$(ssh-add -l | grep '.ssh')" ]; then
+      echo "Empty \`ssh-add -l\`.  Trying to fix, but might need help."
+      ssh-add
+    fi
   fi
 fi
 ## end ssh stuff
