@@ -81,6 +81,8 @@ if [ -f .start_ssh-agent ]; then
     if [ -z "$(ssh-add -l | grep '.ssh')" ]; then
       echo "Empty \`ssh-add -l\`.  Trying to fix, but might need help."
       ssh-add
+      ssh-add .ssh/*-FXCM
+      ssh-add .ssh/*-MOZILLA
     fi
   fi
 fi
@@ -138,3 +140,7 @@ export bash_profile_processed=1
 
 # MacPorts Installer addition on 2014-12-28_at_16:46:45: adding an appropriate PATH variable for use with MacPorts.
 export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+
+[[ -d "$HOME/.rvm/bin" ]] && export PATH=$PATH:$HOME/.rvm/bin
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+rvm use 2.2.4 --default
