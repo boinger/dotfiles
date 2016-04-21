@@ -37,6 +37,9 @@ fi
 ## Fuck you, capslock
 [ -x "`which setxkbmap 2>&1 > /dev/null`" ] && setxkbmap -option ctrl:nocaps > /dev/null 2>&1
 
+## Ubuntu is stupid
+alias node=nodejs
+
 [ -f /etc/profile.d/rvm.sh ] && . /etc/profile.d/rvm.sh
 
 # tell .bash_profile to not loop
@@ -51,3 +54,5 @@ if [ "$UNAME" == "Darwin" ]; then
   PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 fi
 
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
