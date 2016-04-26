@@ -49,8 +49,6 @@ alias gs='git status'
 alias gpr='git pull --rebase'
 alias gspa='git subtree push-all'
 
-#alias push_dognabit='test -d /mnt/sshfs0/html/ || sshfs mmvier@dognabit.com:./ /mnt/sshfs0/ && rsync -CrlptoDv ~/Documents/Sites/dognabit/ /mnt/sshfs0/html/'
-
 [ -e "`which less`" ] && alias more='less'
 [ -e "`which vim`" ] && alias vi='TERM=xterm-color;vim'
 
@@ -133,9 +131,8 @@ esac
 
 export bash_profile_processed=1
 [ $((${bashrc_processed} + 1)) -ne 2 ] && [ -r ~/.bashrc ] && . ~/.bashrc
-#[ -r ~/.bashrc ] && . ~/.bashrc
 
-# MacPorts Installer addition on 2014-12-28_at_16:46:45: adding an appropriate PATH variable for use with MacPorts.
+# MacPorts
 export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 
 [[ -d "$HOME/.rvm/bin" ]] && export PATH=$PATH:$HOME/.rvm/bin
