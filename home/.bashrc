@@ -11,7 +11,7 @@ UNAME=`uname`
 [ -r ~/.bash_fxcm ] && . ~/.bash_fxcm
 [ "$UNAME" == "Darwin" ] && [ -n "$SAVEPS" ] && export PS1=${SAVEPS} && unset SAVEPS
 
-export PATH=/usr/kerberos/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:${HOME}/bin:${HOME}/scripts
+export PATH=/usr/kerberos/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:${HOME}/bin:${HOME}/scripts:${PATH}
 # optional PATHs
 [ -d "/opt/vagrant/bin" ] && export PATH=$PATH:/opt/vagrant/bin
 [ -d "/opt/ec2-api-tools/bin" ] && export PATH=$PATH:/opt/ec2-api-tools/bin && export EC2_HOME=/opt/ec2-api-tools
