@@ -12,9 +12,6 @@ SHN=${LHN%%.com}
 SHN=${SHN%%.local}
 SHN=${SHN%%.localdomain}
 
-#export PATH=$PATH:/usr/games:/opt/kde/bin:/opt/gnome/bin
-#export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/lib/qt3/lib/pkgconfig:/usr/lib/pkgconfig:/opt/gnome/lib/pkgconfig
-
 alias gif2png='gif2png -O'
 alias vncviewer='vncviewer -passwd $HOME/.vnc/passwd'
 
