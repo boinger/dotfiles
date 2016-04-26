@@ -143,4 +143,4 @@ export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 
 [[ -d "$HOME/.rvm/bin" ]] && export PATH=$PATH:$HOME/.rvm/bin
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-rvm use 2.2.4 --default
+#rvm use 2.2.4 --default
