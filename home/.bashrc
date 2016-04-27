@@ -32,10 +32,10 @@ fi
 #export DYLD_LIBRARY_PATH="$DYLD_LIBRARY_PATH:/usr/lib:/opt/local/lib"
 
 ## no beeping:
-[ -x "`which xset 2>&1 > /dev/null`" ] && xset -b > /dev/null 2>&1
+[ -x "`which xset 2& > /dev/null`" ] && xset -b > /dev/null 2>&1
 
 ## Fuck you, capslock
-[ -x "`which setxkbmap 2>&1 > /dev/null`" ] && setxkbmap -option ctrl:nocaps > /dev/null 2>&1
+[ -x "`which setxkbmap 2& > /dev/null`" ] && setxkbmap -option ctrl:nocaps > /dev/null 2>&1
 
 ## Ubuntu is stupid
 alias node=nodejs
