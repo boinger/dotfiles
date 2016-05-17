@@ -25,6 +25,7 @@ set incsearch
 set ignorecase
 "set magic
 set number
+set relativenumber
 set pastetoggle=<F9>
 set ruler
 set scrolloff=10 " guaranteed context lines
@@ -50,8 +51,13 @@ set tabstop=2
 
 set t_Co=256
 
+noremap <F4> <ESC>:set norelativenumber<CR>
+noremap <F5> <ESC>:set relativenumber<CR>
 noremap <F6> <ESC>:set nonumber<CR>
 noremap <F7> <ESC>:set number<CR>
+
+noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
+noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 
 " junk whitespace highlight
 highlight ExtraWhitespace ctermbg=red guibg=red
