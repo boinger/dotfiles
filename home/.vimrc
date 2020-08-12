@@ -41,8 +41,10 @@ set wildmode=list:longest,full
 
 "" Tab style:
 set expandtab
+"set listchars=tab:>-
+"set listchars=tab:→\ ,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»
+set listchars=tab:→\ ,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»
 set list
-set listchars=tab:>-
 set shiftround
 set shiftwidth=2
 set smarttab
