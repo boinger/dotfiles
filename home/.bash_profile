@@ -44,7 +44,7 @@ alias vsh="vagrant ssh"
 alias msshr='mssh --sshopt -oStrictHostKeyChecking=no --sshopt -lroot'
 alias mssh='mssh --sshopt -oStrictHostKeyChecking=no'
 
-alias gd="git diff -b | sed -e 's/^+++ b\//> /' -e '/^--- a/d'"
+alias gd="git diff -M -b -u --color=always --src-prefix=YYYY## --dst-prefix=ZZZZ## | sed -e 's/+++ ZZZZ##/> /' -e '/--- YYYY##/d' -e 's/diff --git YYYY##.*/--------------------------------------------/'"
 alias gs='git status'
 alias gpr='git pull --rebase'
 alias gspa='git subtree push-all'
