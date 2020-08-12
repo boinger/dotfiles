@@ -11,5 +11,4 @@
   pend = "diff --stat origin/master"
   rau = "remote add upstream"
   pod = "push origin development"
-  authfx = !"git config user.email jvier@fxcm.com ; git config user.name jvier"
   authjv = !"git config user.email jeff@jeffvier.com ; git config user.name jv"
