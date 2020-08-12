@@ -8,7 +8,6 @@ UNAME=`uname`
 [ "$UNAME" == "Darwin" ] && SAVEPS=$PS1
 [ -r /etc/bashrc ] && . /etc/bashrc
 [ -r ~/.bash_functions ] && . ~/.bash_functions
-[ -r ~/.bash_fxcm ] && . ~/.bash_fxcm
 [ "$UNAME" == "Darwin" ] && [ -n "$SAVEPS" ] && export PS1=${SAVEPS} && unset SAVEPS
 
 export PATH=/usr/kerberos/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:${HOME}/bin:${HOME}/scripts:${PATH}
@@ -32,10 +31,10 @@ fi
 #export DYLD_LIBRARY_PATH="$DYLD_LIBRARY_PATH:/usr/lib:/opt/local/lib"
 
 ## no beeping:
-[ -x "`which xset 2& > /dev/null`" ] && xset -b > /dev/null 2>&1
+[ -x "`which xset 2>/dev/null`" ] && xset -b > /dev/null 2>&1
 
 ## Fuck you, capslock
-[ -x "`which setxkbmap 2& > /dev/null`" ] && setxkbmap -option ctrl:nocaps > /dev/null 2>&1
+[ -x "`which setxkbmap 2>/dev/null`" ] && setxkbmap -option ctrl:nocaps > /dev/null 2>&1
 
 ## Ubuntu is stupid
 alias node=nodejs
@@ -56,3 +55,6 @@ fi
 
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
