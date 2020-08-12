@@ -12,8 +12,8 @@ SHN=${LHN%%.com}
 SHN=${SHN%%.local}
 SHN=${SHN%%.localdomain}
 
-alias gif2png='gif2png -O'
-alias vncviewer='vncviewer -passwd $HOME/.vnc/passwd'
+#alias gif2png='gif2png -O'
+#alias vncviewer='vncviewer -passwd $HOME/.vnc/passwd'
 
 #export _POSIX2_VERSION=199209
 export CDPATH=".:~:/usr/local"
@@ -76,8 +76,7 @@ if [ -f .start_ssh-agent ]; then
     if [ -z "$(ssh-add -l | grep '.ssh')" ]; then
       echo "Empty \`ssh-add -l\`.  Trying to fix, but might need help."
       ssh-add
-      ssh-add .ssh/*-FXCM
-      ssh-add .ssh/*-MOZILLA
+      #ssh-add .ssh/*-MOZILLA
     fi
   fi
 fi
