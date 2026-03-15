@@ -2,7 +2,10 @@
   autocrlf = input
   safecrlf = false
 	excludesFile = ~/.gitignore_global
+	attributesFile = ~/.gitattributes
 	fsmonitor = false
+[commit]
+	template = ~/.gitmessage
 [user]
   email = jeff@jeffvier.com
   name = jv
