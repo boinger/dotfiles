@@ -4,16 +4,13 @@
 [ -r /etc/bash_completion ] && . /etc/bash_completion
 
 #unset USERNAME
-UNAME=`uname`
+UNAME=$(uname)
 
 export MANPATH="/usr/local/share/man:/usr/local/man:/usr/share/man:/usr/share/locale/en/man"
-LHN=`hostname`
+LHN=$(hostname)
 SHN=${LHN%%.com}
 SHN=${SHN%%.local}
 SHN=${SHN%%.localdomain}
-
-#alias gif2png='gif2png -O'
-#alias vncviewer='vncviewer -passwd $HOME/.vnc/passwd'
 
 #export _POSIX2_VERSION=199209
 export CDPATH=".:~:/usr/local"
@@ -49,34 +46,42 @@ alias gs='git status'
 alias gpr='git pull --rebase'
 alias gspa='git subtree push-all'
 
-[ -e "`which less`" ] && alias more='less'
-[ -e "`which vim`" ] && alias vi='TERM=xterm-color;vim'
+command -v less > /dev/null && alias more='less'
+command -v vim > /dev/null && alias vi='TERM=xterm-color;vim'
 
 ## ssh stuff
-if [ -f .start_ssh-agent ]; then
-  if [ -z "`which keychain`" ]; then
-    echo "you need to install keychain"
-  else
-    SSH_ENV="$HOME/.ssh/environment"
-    function start_keychain {
-      echo -n "Initialising keychain..."
-      keychain --eval -q > ${SSH_ENV}
-      echo succeeded
-      chmod 600 ${SSH_ENV}
-    }
-
-    if [ -f "${SSH_ENV}" ]; then
-      . "${SSH_ENV}" > /dev/null
-      ps -p ${SSH_AGENT_PID} -o comm= | grep ssh-agent$ > /dev/null || start_keychain
-    else
-      start_keychain
-    fi
-
-    # is somehow ssh-agent running without my key?
+if [ -f "$HOME/.start_ssh-agent" ]; then
+  if [ "$UNAME" = "Darwin" ]; then
+    # macOS: use native keychain integration
     if [ -z "$(ssh-add -l | grep '.ssh')" ]; then
-      echo "Empty \`ssh-add -l\`.  Trying to fix, but might need help."
-      ssh-add
-      #ssh-add .ssh/*-MOZILLA
+      echo "Adding SSH key via macOS keychain..."
+      ssh-add --apple-use-keychain
+    fi
+  else
+    # Linux: use keychain
+    if ! command -v keychain > /dev/null; then
+      echo "you need to install keychain"
+    else
+      SSH_ENV="$HOME/.ssh/environment"
+      function start_keychain {
+        echo -n "Initialising keychain..."
+        keychain --eval -q > "${SSH_ENV}"
+        echo succeeded
+        chmod 600 "${SSH_ENV}"
+      }
+
+      if [ -f "${SSH_ENV}" ]; then
+        . "${SSH_ENV}" > /dev/null
+        ps -p ${SSH_AGENT_PID} -o comm= | grep ssh-agent$ > /dev/null || start_keychain
+      else
+        start_keychain
+      fi
+
+      # is somehow ssh-agent running without my key?
+      if [ -z "$(ssh-add -l | grep '.ssh')" ]; then
+        echo "Empty \`ssh-add -l\`.  Trying to fix, but might need help."
+        ssh-add
+      fi
     fi
   fi
 fi
@@ -129,14 +134,15 @@ esac
 #esac
 
 export bash_profile_processed=1
-[ $((${bashrc_processed} + 1)) -ne 2 ] && [ -r ~/.bashrc ] && . ~/.bashrc
+[ "${bashrc_processed:-0}" -ne 1 ] && [ -r ~/.bashrc ] && . ~/.bashrc
 
 # MacPorts
-export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+[ -d /opt/local/bin ] && export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 
-[[ -d "$HOME/.rvm/bin" ]] && export PATH=$PATH:$HOME/.rvm/bin
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-#rvm use 2.2.4 --default
-. "$HOME/.cargo/env"
+[ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
+if [ -x /opt/homebrew/bin/brew ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [ -x /usr/local/bin/brew ]; then
+  eval "$(/usr/local/bin/brew shellenv)"
+fi
