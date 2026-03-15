@@ -2,6 +2,8 @@
   autocrlf = input
   safecrlf = false
 	excludesFile = /Users/jeff.vier/.gitignore_global
+	fsmonitor = false
+	useBuiltinFSMonitor = false
 [user]
   email = jeff@jeffvier.com
   name = jv
