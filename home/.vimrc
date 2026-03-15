@@ -35,7 +35,7 @@ set showmode
 set smartcase
 set title
 set undolevels=128
-set viminfo=/10,'10,r/mnt/zip,r/mnt/floppy,f0,h,\"100
+set viminfo=/50,'50,f0,h,\"100
 set whichwrap+=<,>,h,l
 set wildmode=list:longest,full
 
@@ -75,7 +75,7 @@ filetype plugin on
 autocmd BufNewFile,BufRead,BufEnter Capfile set ft=ruby
 autocmd FileType make set noet sts=8 sw=8
 autocmd BufNewFile,BufRead,BufEnter *.json set ft=json
-autocmd FileType json set sts=3 sw=3
+autocmd FileType json set sts=2 sw=2
 
 " mappings
 map ,r :set syntax=ruby<CR>
