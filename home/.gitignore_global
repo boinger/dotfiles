@@ -1,0 +1,129 @@
+# ============================================
+# Claude Code / Claude CLI
+# ============================================
+
+# Main Claude directory (contains settings, commands, hooks, sessions)
+# Comment out if you want to share team configs (.claude/settings.json)
+.claude/
+
+# Personal/local settings (ALWAYS ignore - contains machine-specific paths, personal prefs)
+.claude/settings.local.json
+**/.claude/settings.local.json
+
+# User-level config (shouldn't be in repos, but just in case)
+.claude.json
+
+# MCP server configurations (project-scoped - may contain API keys in env)
+# Comment out if you want to share MCP configs with team (but scrub secrets first!)
+.mcp.json
+.claude/.mcp.json
+
+# Claude session/conversation data (JSONL transcript files)
+.claude/projects/
+.claude/sessions/
+.claude/*.jsonl
+
+# Claude cache files
+.claude/.cache/
+.claude/cache/
+.cache/
+
+# Claude plugins (if using local/dev plugins)
+.claude/plugins/
+
+# ============================================
+# Claude Memory/Context Files
+# ============================================
+
+# Project instruction files (you probably WANT these committed)
+# Uncomment if you want to ignore:
+CLAUDE.md
+claude.md
+.claude/CLAUDE.md
+
+# ============================================
+# MCP (Model Context Protocol) Related
+# ============================================
+
+# MCP server logs and state
+mcp-*.log
+.mcp/
+mcp_servers/
+
+# ============================================
+# Anthropic API / SDK
+# ============================================
+
+# Environment files (contain API keys)
+.env
+.env.local
+.env.*.local
+.env.development
+.env.production
+
+# Anthropic-specific env patterns
+.anthropic
+anthropic.json
+
+# ============================================
+# Claude Desktop (usually not in repos)
+# ============================================
+
+# macOS Claude Desktop config (shouldn't be in repos)
+claude_desktop_config.json
+
+# ============================================
+# Session Exports & Transcripts
+# ============================================
+
+# Exported conversations
+claude-conversation-*.md
+claude-conversation-*.json
+claude-conversation-*.html
+claude-export/
+claude-exports/
+claude-logs/
+
+# ============================================
+# Potential Future / Edge Cases
+# ============================================
+
+# Claude-generated temporary files
+.claude-tmp/
+.claude-temp/
+claude-output/
+claude-outputs/
+
+# OAuth tokens / session state (if somehow in repo)
+.claude-session
+.claude-auth
+.claude-oauth
+
+# Claude worktree markers (for multi-agent setups)
+.claude-worktree
+
+# Claude skill files (user-created automation)
+.claude/skills/*/logs/
+.claude/skills/*/.cache/
+
+# Backup files Claude Code creates
+*.claude-backup
+.claude/*.bak
+
+# ============================================
+# Related Tool Configs (if using Claude integrations)
+# ============================================
+
+# Cursor (if migrating between Claude Code and Cursor)
+.cursor/
+.cursorrc
+
+# Aider
+.aider*
+.aider.conf.yml
+.aider.input.history
+.aider.chat.history.md
+
+# Continue.dev
+.continue/
+.continuerc.json
