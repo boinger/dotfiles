@@ -3,26 +3,31 @@
 
 [ -n "$DESKTOP_SESSION" ] && unset bash_profile_processed
 
-UNAME=`uname`
+UNAME=$(uname)
 
 [ "$UNAME" == "Darwin" ] && SAVEPS=$PS1
 [ -r /etc/bashrc ] && . /etc/bashrc
 [ -r ~/.bash_functions ] && . ~/.bash_functions
 [ "$UNAME" == "Darwin" ] && [ -n "$SAVEPS" ] && export PS1=${SAVEPS} && unset SAVEPS
 
-export PATH=/usr/kerberos/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:${HOME}/bin:${HOME}/scripts:${HOME}/.local/bin:${PATH}
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/sbin:/usr/bin:/bin:${PATH}
+[ -d "${HOME}/bin" ] && export PATH=${HOME}/bin:${PATH}
+[ -d "${HOME}/scripts" ] && export PATH=${HOME}/scripts:${PATH}
+[ -d "${HOME}/.local/bin" ] && export PATH=${HOME}/.local/bin:${PATH}
 # optional PATHs
 [ -d "/opt/vagrant/bin" ] && export PATH=$PATH:/opt/vagrant/bin
 [ -d "/opt/ec2-api-tools/bin" ] && export PATH=$PATH:/opt/ec2-api-tools/bin && export EC2_HOME=/opt/ec2-api-tools
-[ ! -e "`which git 2>&1 > /dev/null`" ] && [ -e /usr/local/git/bin ] && export PATH=$PATH:/usr/local/git/bin
-[ ! -e "/usr/games/nethack" ] && export PATH=$PATH:/usr/games
+! command -v git > /dev/null 2>&1 && [ -d /usr/local/git/bin ] && export PATH=$PATH:/usr/local/git/bin
+[ -d /usr/games ] && export PATH=$PATH:/usr/games
 
 export LD_LIBRARY_PATH="/lib:/usr/lib:/usr/local/lib"
 
 if [ "$UNAME" == "Darwin" ]; then
   export JAVA_HOME=$(/usr/libexec/java_home)
 else
-  export JAVA_HOME="/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.55.x86_64/jre"
+  if command -v java > /dev/null 2>&1; then
+    export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))
+  fi
 fi
 
 [ -f ~/.ssh/environment ] && export PROMPT_COMMAND='. ~/.ssh/environment'
@@ -31,21 +36,19 @@ fi
 #export DYLD_LIBRARY_PATH="$DYLD_LIBRARY_PATH:/usr/lib:/opt/local/lib"
 
 ## no beeping:
-[ -x "`which xset 2>/dev/null`" ] && xset -b > /dev/null 2>&1
+[ -n "$DISPLAY" ] && command -v xset > /dev/null && xset -b > /dev/null 2>&1
 
 ## Fuck you, capslock
-[ -x "`which setxkbmap 2>/dev/null`" ] && setxkbmap -option ctrl:nocaps > /dev/null 2>&1
+[ -n "$DISPLAY" ] && command -v setxkbmap > /dev/null && setxkbmap -option ctrl:nocaps > /dev/null 2>&1
 
-## Ubuntu is stupid (but macOS isn't, so no alias needed)
-# alias node=nodejs
-
-[ -f /etc/profile.d/rvm.sh ] && . /etc/profile.d/rvm.sh
+# RVM (uncomment if needed)
+#[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+#[[ -d "$HOME/.rvm/bin" ]] && export PATH="$PATH:$HOME/.rvm/bin"
 
 # tell .bash_profile to not loop
 export bashrc_processed=1
 
-[ $((${bash_profile_processed} + 1)) -ne 2 ] && [ -r ~/.bash_profile ] && . ~/.bash_profile
-#. ~/.bash_profile
+[ "${bash_profile_processed:-0}" -ne 1 ] && [ -r ~/.bash_profile ] && . ~/.bash_profile
 
 if [ "$UNAME" == "Darwin" ]; then
   export PERL_MB_OPT="--install_base \"$HOME/perl5\""
@@ -54,13 +57,12 @@ if [ "$UNAME" == "Darwin" ]; then
 fi
 
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 
 export PYTHONPATH=${PYTHONPATH}:.
-. "$HOME/.cargo/env"
+[ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
 
 ## Beak Keeper specific stuff
 alias bkfa='cd ~/Projects/BeakKeeper/ChickIndex && echo "flutter analyze for Main App" && flutter analyze && cd ../chickindex_pet_sitter && echo "flutter analyze for Sitter App" && flutter analyze && cd ../chickindex_shared && echo "flutter analyze for shared resources" && flutter analyze && cd ../'
