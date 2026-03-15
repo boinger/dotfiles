@@ -3,3 +3,6 @@
 .secrets
 .env
 .DS_Store
+*.dotfiles-bak.*
+Brewfile.lock.json
+plans/
