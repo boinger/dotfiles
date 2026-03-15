@@ -1,17 +1,20 @@
 [core]
   autocrlf = input
   safecrlf = false
-	excludesFile = /Users/jeff.vier/.gitignore_global
+	excludesFile = ~/.gitignore_global
 	fsmonitor = false
-	useBuiltinFSMonitor = false
 [user]
   email = jeff@jeffvier.com
   name = jv
+[init]
+  defaultBranch = main
 [push]
-  default = matching
+  default = simple
+[pull]
+  rebase = true
 [alias]
-  pu = !"git fetch origin -v; git fetch upstream -v; git merge upstream/master"
-  pend = "diff --stat origin/master"
+  pu = !"git fetch origin -v; git fetch upstream -v; git merge upstream/$(git symbolic-ref refs/remotes/upstream/HEAD 2>/dev/null | sed 's@^refs/remotes/upstream/@@' || echo main)"
+  pend = !"git diff --stat origin/$(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's@^refs/remotes/origin/@@' || echo main)"
   rau = "remote add upstream"
   pod = "push origin development"
   authjv = !"git config user.email jeff@jeffvier.com ; git config user.name jv"
