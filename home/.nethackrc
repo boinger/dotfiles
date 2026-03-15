@@ -15,7 +15,7 @@ OPTIONS=align:law
 
 OPTIONS=catname:Serval,dogname:Jos,horsename:SuperHorse,safe_pet
 OPTIONS=hilite_pet
-OPTIONS=fruit:durien
+OPTIONS=fruit:durian
 
 OPTIONS=boulder:8
 OPTIONS=msg_window:f
@@ -70,7 +70,7 @@ MENUCOLOR=" [Uu]nholy .* ([a-z]"=red&underline
 MENUCOLOR=" [Ww]orthless"=brown
 
 MENUCOLOR="safe"=yellow
-MENUCOLOR="safe .* ([a-z]"=yellow,&underline
+MENUCOLOR="safe .* ([a-z]"=yellow&underline
 
 ## Walk in peace over empty wands:
 AUTOPICKUP_EXCEPTION=">*:0)*"
