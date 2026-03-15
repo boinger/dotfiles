@@ -1,27 +1,29 @@
 function sr {
-  if [ $1 ]; then
-    ssh -2 root@$1
+  if [ "$1" ]; then
+    ssh root@"$1"
   else
     ssh -X -C -l root localhost
   fi
 }
 
-function err {
-  if [ $1 ]; then
-    X=$(er -e "$1" 2>&1)
-    if [ $? != 0 ]; then
-      echo "invalid range"
-    else
-      ssh -2 -l root $X
-    fi
-  else
-    er -h
-  fi
-}
+# Requires 'er' host range tool — uncomment if available
+#function err {
+#  if [ "$1" ]; then
+#    X=$(er -e "$1" 2>&1)
+#    if [ $? != 0 ]; then
+#      echo "invalid range"
+#    else
+#      ssh -l root "$X"
+#    fi
+#  else
+#    er -h
+#  fi
+#}
 
 function netselect {
-  if [ -f $1 ]; then
-    serverlist=`cat $1`
+  command -v /usr/local/bin/netselect > /dev/null || { echo "netselect not found"; return 1; }
+  if [ -f "$1" ]; then
+    serverlist=$(cat "$1")
   else
     serverlist="$*"
   fi
@@ -34,13 +36,17 @@ function make_me_cmd {
 
 function prepme {
   cd
-  KEY=$(cat .ssh/id_rsa.pub)
-  ssh $1 "[ ! -d .ssh ] && mkdir .ssh ; chmod 700 .ssh ; [ ! -f .ssh/authorized_keys ] && echo $KEY > .ssh/authorized_keys"
-  #scp .bash_functions .bash_logout .bash_profile .bashrc $1:
+  if [ ! -f "$HOME/.ssh/id_rsa.pub" ]; then
+    echo "No SSH public key found at ~/.ssh/id_rsa.pub"
+    cd -
+    return 1
+  fi
+  KEY=$(cat "$HOME/.ssh/id_rsa.pub")
+  ssh "$1" "[ ! -d .ssh ] && mkdir .ssh ; chmod 700 .ssh ; [ ! -f .ssh/authorized_keys ] && echo '$KEY' > .ssh/authorized_keys"
   cd -
 }
 
-# range required:
-function cl {
-  er "clusters($1)"
-}
+# Requires 'er' host range tool — uncomment if available
+#function cl {
+#  er "clusters($1)"
+#}
