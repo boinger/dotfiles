@@ -1,4 +1,15 @@
 # ============================================
+# OS / Editor temp files
+# ============================================
+
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/
+
+# ============================================
 # Claude Code / Claude CLI
 # ============================================
 
@@ -37,9 +48,9 @@
 
 # Project instruction files (you probably WANT these committed)
 # Uncomment if you want to ignore:
-CLAUDE.md
-claude.md
-.claude/CLAUDE.md
+# CLAUDE.md
+# claude.md
+# .claude/CLAUDE.md
 
 # ============================================
 # MCP (Model Context Protocol) Related
