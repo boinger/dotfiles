@@ -137,3 +137,6 @@ export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 [[ -d "$HOME/.rvm/bin" ]] && export PATH=$PATH:$HOME/.rvm/bin
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 #rvm use 2.2.4 --default
+. "$HOME/.cargo/env"
+
+eval "$(/opt/homebrew/bin/brew shellenv)"

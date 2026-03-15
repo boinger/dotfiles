@@ -10,7 +10,7 @@ UNAME=`uname`
 [ -r ~/.bash_functions ] && . ~/.bash_functions
 [ "$UNAME" == "Darwin" ] && [ -n "$SAVEPS" ] && export PS1=${SAVEPS} && unset SAVEPS
 
-export PATH=/usr/kerberos/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:${HOME}/bin:${HOME}/scripts:${PATH}
+export PATH=/usr/kerberos/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:${HOME}/bin:${HOME}/scripts:${HOME}/.local/bin:${PATH}
 # optional PATHs
 [ -d "/opt/vagrant/bin" ] && export PATH=$PATH:/opt/vagrant/bin
 [ -d "/opt/ec2-api-tools/bin" ] && export PATH=$PATH:/opt/ec2-api-tools/bin && export EC2_HOME=/opt/ec2-api-tools
@@ -36,8 +36,8 @@ fi
 ## Fuck you, capslock
 [ -x "`which setxkbmap 2>/dev/null`" ] && setxkbmap -option ctrl:nocaps > /dev/null 2>&1
 
-## Ubuntu is stupid
-alias node=nodejs
+## Ubuntu is stupid (but macOS isn't, so no alias needed)
+# alias node=nodejs
 
 [ -f /etc/profile.d/rvm.sh ] && . /etc/profile.d/rvm.sh
 
@@ -58,3 +58,15 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
+
+export PYTHONPATH=${PYTHONPATH}:.
+. "$HOME/.cargo/env"
+
+## Beak Keeper specific stuff
+alias bkfa='cd ~/Projects/BeakKeeper/ChickIndex && echo "flutter analyze for Main App" && flutter analyze && cd ../chickindex_pet_sitter && echo "flutter analyze for Sitter App" && flutter analyze && cd ../chickindex_shared && echo "flutter analyze for shared resources" && flutter analyze && cd ../'
+alias bkgs='cd ~/Projects/BeakKeeper/ChickIndex && echo "Main app" && git status && cd ../chickindex_pet_sitter && echo "Sitter app" && git status && cd ../chickindex_shared && echo "shared repo" && git status && cd ..'
+alias bkp='cd ~/Projects/BeakKeeper/ChickIndex && echo "pushing Main app" && git push && cd ../chickindex_pet_sitter && echo "pushing Sitter app" && git push && cd ../chickindex_shared && echo "pushing shared repo" && git push && cd ..'
+alias bkt='cd ~/Projects/BeakKeeper/ChickIndex && echo "flutter test for Main App" && flutter test && cd ../chickindex_pet_sitter && echo "flutter test for Sitter App" && flutter test && cd ../chickindex_shared && echo "flutter test for shared resources" && flutter test && cd ..'
+
+# Secrets loaded from separate file (not committed to dotfiles)
+[ -r ~/.secrets ] && . ~/.secrets

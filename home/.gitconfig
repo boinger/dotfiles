@@ -1,6 +1,7 @@
 [core]
   autocrlf = input
   safecrlf = false
+	excludesFile = /Users/jeff.vier/.gitignore_global
 [user]
   email = jeff@jeffvier.com
   name = jv
@@ -12,3 +13,14 @@
   rau = "remote add upstream"
   pod = "push origin development"
   authjv = !"git config user.email jeff@jeffvier.com ; git config user.name jv"
+[branch "development"]
+  mergeoptions = --no-ff
+[branch "staging"]
+  mergeoptions = --no-ff
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[url "git@github.com:"]
+	insteadOf = https://github.com/

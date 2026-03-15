@@ -28,6 +28,10 @@ function netselect {
   /usr/local/bin/netselect -vv -s 5 $serverlist
 }
 
+function make_me_cmd {
+  echo 'useradd -m -s /bin/bash -G admin,sudo -c "Jeff Vier" jv'
+}
+
 function prepme {
   cd
   KEY=$(cat .ssh/id_rsa.pub)
