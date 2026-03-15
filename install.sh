@@ -9,6 +9,11 @@
 
 set -euo pipefail
 
+if ! command -v python3 &> /dev/null; then
+  echo "Error: python3 is required" >&2
+  exit 1
+fi
+
 DOTFILES_DIR="$(cd "$(dirname "$0")" && pwd)"
 HOME_DIR="$DOTFILES_DIR/home"
 DRY_RUN=false
