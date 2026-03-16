@@ -11,13 +11,16 @@ Personal dotfiles for Jeff Vier (`boinger/dotfiles`). All managed dotfiles live 
 `install.sh` symlinks all dotfiles from `home/` into `~`:
 
 ```bash
-./install.sh --dry-run  # preview what would happen
 ./install.sh            # create symlinks
+./install.sh --dry-run  # preview what would happen
+./install.sh --diff     # show diffs between ~/ and repo (implies --dry-run)
+./install.sh --help     # print usage
 ```
 
 - **Idempotent**: correct symlinks are skipped on re-run
 - **Safe**: existing files are backed up to `<file>.dotfiles-bak.<timestamp>` before overwriting
 - **Relative symlinks**: uses `dotfiles/home/<file>` paths (via `~/dotfiles` symlink to repo)
+- **`--diff` exit codes**: `0` = no differences, `1` = differences found, `2` = error (follows `diff` convention)
 - **Requires**: `python3` (used for path resolution)
 
 ## No Build/Test/Lint
