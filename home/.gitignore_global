@@ -46,11 +46,10 @@ Thumbs.db
 # Claude Memory/Context Files
 # ============================================
 
-# Project instruction files (you probably WANT these committed)
-# Uncomment if you want to ignore:
-# CLAUDE.md
-# claude.md
-# .claude/CLAUDE.md
+# Project-level Claude instructions (not repo content)
+CLAUDE.md
+claude.md
+.claude/CLAUDE.md
 
 # ============================================
 # MCP (Model Context Protocol) Related
